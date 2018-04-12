@@ -29,7 +29,7 @@ DexFileType::DexFileType(DexFileHelper* dex_file_helper)
 		dex_type->dex_string = str;
 		typeData.insert(std::make_pair(i, dex_type));
 		dex_type_id++;
-		LOGD("[=]read Type:%s", dex_type->dex_string->data);
+		//LOGD("[=]read Type:%s", dex_type->dex_string->data);
 	}
 	LOGI("[+]parse TypeID over :0x%08x", typeData.size());
 }

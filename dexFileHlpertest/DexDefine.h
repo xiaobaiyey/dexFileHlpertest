@@ -49,6 +49,18 @@ typedef signed int S4;
 typedef signed long long S8;
 #endif
 
+union JValue
+{
+	u1 z;
+	s1 b;
+	u2 c;
+	s2 s;
+	s4 i;
+	s8 j;
+	float f;
+	double d;
+	void* l;
+};
 
 typedef struct DexHeader
 {
@@ -186,19 +198,7 @@ typedef struct DexMethod
 } DexMethod;
 
 
-typedef struct DexClassDef
-{
-	u4 idx;
-	DexType* class_type;
-	u4 accessFlags;
-	DexType* superclass_type;
-	DexTypeList* interface_typelist;
-	DexString* sourceFile_string;
-	///todo
-	u4 annotationsOff;
-	u4 classDataOff;
-	u4 staticValuesOff; /* file offset to DexEncodedArray */
-} DexClassDef;
+
 
 typedef struct DexAnnotationItem
 {
@@ -244,6 +244,7 @@ typedef struct DexMethodAnnotationsItem
 struct DexAnnotationSetRefList
 {
 	u4 size;
+	u4 offset;
 	//DexAnnotationSetRefItem list[1];
 	std::vector<DexAnnotationSetItem*> dex_annotation_set_items;
 };
@@ -277,3 +278,31 @@ typedef struct DexAnnotationsDirectoryItem
 	/* followed by DexParameterAnnotationsItem[parametersSize] */
 	std::vector<DexParameterAnnotationsItem*> parameter_annotations_items;
 } DexAnnotationsDirectoryItem;
+
+
+typedef struct AnnotationValue
+{
+	JValue value;
+	u1 type;
+} AnnotationValue;
+
+
+typedef struct DexEncodedArray
+{
+	u4 offset;
+	u4 len;
+	u1* data;
+} DexEncodedArray;
+
+
+typedef struct DexClassDef
+{
+	u4 classIdx; /* index into typeIds for this class */
+	u4 accessFlags;
+	u4 superclassIdx; /* index into typeIds for superclass */
+	u4 interfacesOff; /* file offset to DexTypeList */
+	u4 sourceFileIdx; /* index into stringIds for source file name */
+	u4 annotationsOff; /* file offset to annotations_directory_item */
+	u4 classDataOff; /* file offset to class_data_item */
+	u4 staticValuesOff; /* file offset to DexEncodedArray */
+} DexClassDef;

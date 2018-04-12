@@ -1,6 +1,7 @@
 #include "dexFileHelper.h"
 #include "DexFileUtils.h"
 #include "pch.h"
+#include "DexFileEncodedArray.h"
 
 
 DexFileHelper::DexFileHelper(u1* data, u4 len)
@@ -21,7 +22,11 @@ DexFileHelper::DexFileHelper(u1* data, u4 len)
 	dex_file_method = new DexFileMethod(this);
 	dex_file_annotation_item = new DexFileAnnotationItem(this);
 	dex_file_annotation_set_item = new DexFileAnnotationSetItem(this);
+	dex_file_annotation_set_ref_list = new DexFileAnnotationSetRefList(this);
 	dex_file_annotations_directory_item = new DexFileAnnotationsDirectoryItem(this);
+	dex_file_encoded_array = new DexFileEncodedArray(this);
+	
+
 }
 
 DexFileHelper* DexFileHelper::getDexFileHelper(const char* path)

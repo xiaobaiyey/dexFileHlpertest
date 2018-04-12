@@ -28,8 +28,8 @@ DexFileField::DexFileField(DexFileHelper* dex_file_helper)
 		dex_field->name_string = dex_file_helper->dex_file_string->getDexStringById(nameIdx);
 		data = data + sizeof(nameIdx);
 		//add to maps
-		LOGD("[=]idx:0x%04x classIdx:0x%02x %s,typeIdx:0x%02x %s,nameIdx:0x%04x %s",i,classIdx,dex_field->class_type->
-			dex_string->data,typeIdx,dex_field->type_type->dex_string->data,nameIdx,dex_field->name_string->data);
+		/*LOGD("[=]idx:0x%04x classIdx:0x%02x %s,typeIdx:0x%02x %s,nameIdx:0x%04x %s",i,classIdx,dex_field->class_type->
+			dex_string->data,typeIdx,dex_field->type_type->dex_string->data,nameIdx,dex_field->name_string->data);*/
 		dex_field_maps.insert(std::make_pair(i, dex_field));
 	}
 	LOGI("[+]read fields size:0x%08x",fieldSize);

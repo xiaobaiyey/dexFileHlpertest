@@ -25,9 +25,14 @@ DexFileAnnotationsDirectoryItem::DexFileAnnotationsDirectoryItem(DexFileHelper* 
 		dex_annotations_directory_item->offset = offset;
 		//read classAnnotationsOff
 		u4 classAnnotationsOff = *reinterpret_cast<u4*>(data);
-		dex_annotations_directory_item->classAnnotationsOff = dex_file_helper
-		                                                      ->dex_file_annotation_set_item->getDexAnnotationSetItemByOffset(
-			                                                      classAnnotationsOff);
+		if (classAnnotationsOff != 0)
+		{
+			dex_annotations_directory_item->classAnnotationsOff = dex_file_helper
+			                                                      ->dex_file_annotation_set_item->
+			                                                      getDexAnnotationSetItemByOffset(
+				                                                      classAnnotationsOff);
+		}
+
 		data = data + sizeof(classAnnotationsOff);
 		//read fieldsSize
 		u4 fieldsSize = *reinterpret_cast<u4*>(data);
@@ -70,15 +75,47 @@ DexFileAnnotationsDirectoryItem::DexFileAnnotationsDirectoryItem(DexFileHelper* 
 			                                                       ->dex_file_annotation_set_item->
 			                                                       getDexAnnotationSetItemByOffset(annotationsOff);
 			data = data + sizeof(annotationsOff);
+			dex_annotations_directory_item->method_annotations_items.push_back(dex_method_annotations_item);
 		}
 		//read DexParameterAnnotationsItems
 		for (u4 j = 0; j < parametersSize; ++j)
 		{
+			DexParameterAnnotationsItem* dex_parameter_annotations_item = new DexParameterAnnotationsItem;
+			u4 methodIdx = *reinterpret_cast<u4*>(data);
+			dex_parameter_annotations_item->methodIdx = methodIdx;
+			data = data + sizeof(methodIdx);
 
+			u4 annotationsOff = *reinterpret_cast<u4*>(data);
+			dex_parameter_annotations_item->annotationsOff = annotationsOff;
+			DexAnnotationSetRefList* dex_annotation_set_ref_list = dex_file_helper
+			                                                       ->dex_file_annotation_set_ref_list->
+			                                                       getDexAnnotationSetRefListByOffset(annotationsOff);
+			dex_parameter_annotations_item->dex_annotation_set_ref_list = dex_annotation_set_ref_list;
+
+			data = data + sizeof(annotationsOff);
+			dex_annotations_directory_item->parameter_annotations_items.push_back(dex_parameter_annotations_item);
 		}
+		dex_annotations_directory_item_maps.insert(std::make_pair(dex_annotations_directory_item->offset,
+		                                                          dex_annotations_directory_item));
 	}
+
+	LOGI("[+]read kDexTypeAnnotationsDirectoryItem size:0x%08x", dex_annotations_directory_item_maps.size());
 }
 
 DexFileAnnotationsDirectoryItem::~DexFileAnnotationsDirectoryItem()
 {
+}
+
+DexAnnotationsDirectoryItem* DexFileAnnotationsDirectoryItem::getDexAnnotationsDirectoryItemByOffset(u4 offset)
+{
+	if (offset == 0)
+	{
+		return nullptr;
+	}
+	DexAnnotationsDirectoryItem* temp_item = dex_annotations_directory_item_maps[offset];
+	if (temp_item == nullptr)
+	{
+		LOGE("[-]getDexAnnotationsDirectoryItemByOffset offset:0x%04x",offset);
+	}
+	return temp_item;
 }

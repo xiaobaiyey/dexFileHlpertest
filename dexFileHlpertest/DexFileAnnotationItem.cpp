@@ -18,7 +18,7 @@ DexFileAnnotationItem::DexFileAnnotationItem(DexFileHelper* dex_file_helper)
 	u1* temp = start;
 	int len = dex_map_item->size;
 
-	for (u4 i = 0; i < len; ++i)
+	for (int i = 0; i < len; ++i)
 	{
 		DexAnnotationItem* dex_annotation_item = new DexAnnotationItem;
 		//get data offset in  dexfile;
@@ -70,7 +70,7 @@ const u1* DexFileAnnotationItem::verifyEncodedAnnotation(const u1* temp)
 	u4 idx = DexFileUtils::readUnsignedLeb128(&data);
 	DexType* dex_type = dex_file_helper_->dex_file_type->getTypeById(idx);
 	const char* descriptor = dex_type->dex_string->data;
-	LOGD("[=]descriptor:%s", descriptor);
+	//LOGD("[=]descriptor:%s", descriptor);
 	u4 size = DexFileUtils::readUnsignedLeb128(&data);
 
 	u4 lastIdx = 0;

@@ -11,6 +11,9 @@
 #include "DexFileAnnotationsDirectoryItem.h"
 #include "DexFileField.h"
 #include "DexFileMethod.h"
+#include "DexFileAnnotationSetRefList.h"
+#include "DexFileEncodedArray.h"
+#include "DexFileClass.h"
 
 class DexFileHelper
 {
@@ -28,6 +31,9 @@ public:
 	DexFileAnnotationItem* dex_file_annotation_item;
 	DexFileAnnotationSetItem* dex_file_annotation_set_item;
 	DexFileAnnotationsDirectoryItem* dex_file_annotations_directory_item;
+	DexFileAnnotationSetRefList* dex_file_annotation_set_ref_list;
+	DexFileEncodedArray* dex_file_encoded_array;
+	DexFileClass* dex_file_class;
 private:
 	u1 * dex_address;
 };

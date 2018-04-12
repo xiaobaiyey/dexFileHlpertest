@@ -29,7 +29,7 @@ DexFileString::DexFileString(DexFileHelper* dex_file_helper)
 		dex_string->idx = i;
 		dex_string_id++;
 		stringData.insert(std::make_pair(i, dex_string));
-		LOGD("[=]read String:%s",dex_string->data);
+		//LOGD("[=]read String:%s",dex_string->data);
 	}
 	LOGI("[+]parse StringID over :0x%08x",stringData.size());
 }
