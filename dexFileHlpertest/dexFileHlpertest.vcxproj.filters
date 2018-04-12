@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileAnnotationItem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileAnnotationsDirectoryItem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileAnnotationSetItem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileField.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileHeader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileMethod.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileProtoType.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileString.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileType.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileTypeList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileUtils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileVertor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileAnnotationSetRefList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileAnnotationItem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileAnnotationsDirectoryItem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileAnnotationSetItem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileField.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileHeader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileMethod.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileProtoType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileTypeList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileVertor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileAnnotationSetRefList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
