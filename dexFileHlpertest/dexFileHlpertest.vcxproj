@@ -132,6 +132,7 @@
     <ClCompile Include="DexFileMethod.cpp" />
     <ClCompile Include="DexFileProtoType.cpp" />
     <ClCompile Include="DexFileString.cpp" />
+    <ClCompile Include="DexFileTry.cpp" />
     <ClCompile Include="DexFileType.cpp" />
     <ClCompile Include="DexFileTypeList.cpp" />
     <ClCompile Include="DexFileUtils.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="DexFileMethod.h" />
     <ClInclude Include="DexFileProtoType.h" />
     <ClInclude Include="DexFileString.h" />
+    <ClInclude Include="DexFileTry.h" />
     <ClInclude Include="DexFileType.h" />
     <ClInclude Include="DexFileTypeList.h" />
     <ClInclude Include="DexFileUtils.h" />

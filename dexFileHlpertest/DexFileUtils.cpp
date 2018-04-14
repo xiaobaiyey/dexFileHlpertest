@@ -8,7 +8,6 @@
 #include <stdio.h>
 
 
-
 bool DexFileUtils::isDex(void* inAddr)
 {
 	if ((0 == memcmp(inAddr, "dex", 3)) || (0 == memcmp(inAddr, "dey", 3)))
@@ -54,10 +53,8 @@ unsigned int DexFileUtils::hash(const char* temp)
 	return (hash & 0x7FFFFFFF);
 }
 
-unsigned char * DexFileUtils::readFile(const char * inPath, size_t * inReadSize)
+unsigned char* DexFileUtils::readFile(const char* inPath, size_t* inReadSize)
 {
-
-
 	void* result = NULL;
 	size_t mSize = 0;
 	int mfd;
@@ -66,7 +63,7 @@ unsigned char * DexFileUtils::readFile(const char * inPath, size_t * inReadSize)
 		((mfd = open(inPath, O_RDONLY | O_BINARY)) == -1))
 	{
 		LOGE("readFile is Fail!");
-		goto	bail;
+		goto bail;
 	}
 	result = calloc(1, mstat.st_size);
 
@@ -81,7 +78,7 @@ bail:
 	return static_cast<u1*>(result);
 }
 
-int DexFileUtils::readSLeb128(u1** pStream)
+int DexFileUtils::readSignedLeb128(u1** pStream)
 {
 	unsigned char* ptr = (unsigned char*)*pStream;
 	int result = *(ptr++);
@@ -191,4 +188,10 @@ u4 DexFileUtils::readUnsignedLittleEndian(const u1** pData, u4 size)
 
 	*pData = data;
 	return result;
+}
+
+u4 DexFileUtils::align_4(size_t size)
+{
+	size_t mSzie = (size + 3) & (~3);
+	return mSzie;
 }

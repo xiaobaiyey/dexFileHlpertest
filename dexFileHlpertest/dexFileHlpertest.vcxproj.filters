@@ -72,6 +72,9 @@
     <ClCompile Include="DexFileCode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DexFileTry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -132,6 +135,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DexFileCode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileTry.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -23,7 +23,7 @@ DexFileString::DexFileString(DexFileHelper* dex_file_helper)
 		DexString* dex_string = new DexString;
 		u1* ptr = base + dex_string_id->stringDataOff;
 		while (*(ptr++) > 0x7f) /* empty */;
-		//int uleblen = DexFileUtils::readSLeb128(&ptr);
+		//int uleblen = DexFileUtils::readSignedLeb128(&ptr);
 		dex_string->data = (char*)ptr;
 		dex_string->hash = DexFileUtils::hash(dex_string->data);
 		dex_string->idx = i;

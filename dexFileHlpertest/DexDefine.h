@@ -142,6 +142,15 @@ enum
 	kDexAnnotationValueArgShift = 5,
 };
 
+/* general constants */
+enum
+{
+	kDexEndianConstant = 0x12345678,
+	/* the endianness indicator */
+	kDexNoIndex = 0xffffffff,
+	/* not a valid index value */
+};
+
 typedef struct DexMapItem
 {
 	u2 type; /* type code (see kDexType* above) */
@@ -196,8 +205,6 @@ typedef struct DexMethod
 	DexProto* type_type;
 	DexString* name_string;
 } DexMethod;
-
-
 
 
 typedef struct DexAnnotationItem
@@ -306,3 +313,58 @@ typedef struct DexClassDef
 	u4 classDataOff; /* file offset to class_data_item */
 	u4 staticValuesOff; /* file offset to DexEncodedArray */
 } DexClassDef;
+
+
+typedef struct DexCode
+{
+	u2 registersSize;
+	u2 insSize;
+	u2 outsSize;
+	u2 triesSize;
+	u4 debugInfoOff; /* file offset to debug info stream */
+	u4 insnsSize; /* size of the insns array, in u2 units */
+	u2 insns[1];
+	/* followed by optional u2 padding */
+	/* followed by try_item[triesSize] */
+	/* followed by uleb128 handlersSize */
+	/* followed by catch_handler_item[handlersSize] */
+} DexCode;
+
+typedef struct DexCodeMemory
+{
+	u4 offset;
+	u4 triesSize;
+	u2 insnsSize;
+	u2* insns;
+	u4  dex_code_len;
+	DexCode* dex_code;
+} DexCodeMemory;
+
+
+typedef struct DexTry
+{
+	u4 startAddr; /* start address, in 16-bit code units */
+	u2 insnCount; /* instruction count, in 16-bit code units */
+	u2 handlerOff; /* offset in encoded handler data to handlers */
+} DexTry;
+
+/*
+* Catch handler entry, used while iterating over catch_handler_items.
+*/
+struct DexCatchHandler
+{
+	u4 typeIdx; /* type index of the caught exception type */
+	u4 address; /* handler address */
+};
+
+/*
+* Iterator over catch handler data. This structure should be treated as
+* opaque.
+*/
+struct DexCatchIterator
+{
+	const u1* pEncodedData;
+	bool catchesAll;
+	u4 countRemaining;
+	DexCatchHandler handler;
+};
