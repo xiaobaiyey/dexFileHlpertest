@@ -159,52 +159,52 @@ typedef struct DexMapItem
 	u4 offset; /* file offset to the start of data */
 } DexMapItem;
 
-typedef struct DexString
+typedef struct DexStringIdx
 {
 	u4 idx;
 	u4 hash;
 	u4 ulebLen;
 	char* data;
-} DexString;
+} DexStringIdx;
 
 
-typedef struct DexType
+typedef struct DexTypeIdx
 {
 	u4 idx;
-	DexString* dex_string;
-} DexType;
+	DexStringIdx* dex_string;
+} DexTypeIdx;
 
 typedef struct DexTypeList
 {
 	u4 offset;
 	u4 size;
-	std::vector<DexType*> typeItems;
+	std::vector<DexTypeIdx*> typeItems;
 } DexTypeList;
 
-typedef struct DexProto
+typedef struct DexProtoIdx
 {
 	u4 idx;
-	DexString* shorty_string;
-	DexType* returnType_type;
+	DexStringIdx* shorty_string;
+	DexTypeIdx* returnType_type;
 	DexTypeList* dex_type_list;
-} DexProto;
+} DexProtoIdx;
 
-typedef struct DexField
+typedef struct DexFieldIdx
 {
 	u4 idx;
-	DexType* class_type;
-	DexType* type_type;
-	DexString* name_string;
-} DexField;
+	DexTypeIdx* class_type;
+	DexTypeIdx* type_type;
+	DexStringIdx* name_string;
+} DexFieldIdx;
 
 
-typedef struct DexMethod
+typedef struct DexMethodIdx
 {
 	u4 idx;
-	DexType* class_type;
-	DexProto* type_type;
-	DexString* name_string;
-} DexMethod;
+	DexTypeIdx* class_type;
+	DexProtoIdx* type_type;
+	DexStringIdx* name_string;
+} DexMethodIdx;
 
 
 typedef struct DexAnnotationItem
@@ -333,7 +333,7 @@ typedef struct DexCode
 
 typedef struct DexCatchHandlerMemory
 {
-	DexType* typeIdx; /* type index of the caught exception type */
+	DexTypeIdx* typeIdx; /* type index of the caught exception type */
 	u4 offset; /* handler address */
 } DexCatchHandlerMemory;
 
@@ -399,3 +399,54 @@ typedef struct DexCatchIterator
 	s4 countRemaining;
 	DexCatchHandler handler;
 } DexCatchIterator;
+
+
+/* expanded form of encoded_field */
+typedef struct DexField
+{
+	DexFieldIdx* fieldIdx; /* index to a field_id_item */
+	u4 accessFlags;
+} DexField;
+
+/* expanded form of a class_data_item header */
+typedef struct DexClassDataHeader
+{
+	u4 staticFieldsSize;
+	u4 instanceFieldsSize;
+	u4 directMethodsSize;
+	u4 virtualMethodsSize;
+} DexClassDataHeader;
+
+/* expanded form of encoded_method */
+typedef struct DexMethod
+{
+	struct DexClass* dex_class;
+	DexMethodIdx* methodIdx; /* index to a method_id_item */
+	u4 accessFlags;
+	DexCodeMemory* codeOff; /* file offset to a code_item */
+} DexMethod;
+
+/* expanded form of class_data_item. Note: If a particular item is
+* absent (e.g., no static fields), then the corresponding pointer
+* is set to NULL. */
+typedef struct DexClassData
+{
+	DexClassDataHeader* header;
+	std::vector<DexField*> staticFields;
+	std::vector<DexField*> instanceFields;
+	std::vector<DexMethod*> directMethods;
+	std::vector<DexMethod*> virtualMethods;
+} DexClassData;
+
+typedef struct DexClass
+{
+	u4 idx;
+	DexTypeIdx* classType;
+	u4 accessFlags;
+	DexTypeIdx* superclassType;
+	DexTypeList* interfacesList;
+	DexStringIdx* sourceFileString;
+	DexAnnotationsDirectoryItem* dex_annotations_directory_item;
+	DexClassData* dex_class_data;
+	DexEncodedArray* dex_encoded_array;
+} DexClass;

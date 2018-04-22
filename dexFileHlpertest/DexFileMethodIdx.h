@@ -6,9 +6,10 @@ class DexFileMethodIdx
 {
 public:
 	DexFileMethodIdx(DexFileHelper* dex_file_helper);
+	DexMethodIdx* getDexFileMethodIdxById(u4 idx);
 	~DexFileMethodIdx();
 private:
 	DexFileHelper * dex_file_helper_;
-	std::map<u4, DexMethod*> dex_method_maps;
+	std::map<u4, DexMethodIdx*> dex_method_maps;
 };
 

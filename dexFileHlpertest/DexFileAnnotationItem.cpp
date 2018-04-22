@@ -68,7 +68,7 @@ const u1* DexFileAnnotationItem::verifyEncodedAnnotation(const u1* temp)
 {
 	const u1* data = temp;
 	u4 idx = DexFileUtils::readUnsignedLeb128(&data);
-	DexType* dex_type = dex_file_helper_->dex_file_type->getTypeById(idx);
+	DexTypeIdx* dex_type = dex_file_helper_->dex_file_type->getTypeById(idx);
 	const char* descriptor = dex_type->dex_string->data;
 	//LOGD("[=]descriptor:%s", descriptor);
 	u4 size = DexFileUtils::readUnsignedLeb128(&data);

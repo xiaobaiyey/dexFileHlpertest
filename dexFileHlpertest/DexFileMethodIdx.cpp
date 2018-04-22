@@ -1,4 +1,3 @@
-
 #include "DexFileHelper.h"
 #include "pch.h"
 
@@ -13,7 +12,7 @@ DexFileMethodIdx::DexFileMethodIdx(DexFileHelper* dex_file_helper)
 	u1* data = base + methodOff;
 	for (u4 i = 0; i < methodSize; ++i)
 	{
-		DexMethod* dex_method = new DexMethod;
+		DexMethodIdx* dex_method = new DexMethodIdx;
 		dex_method->idx = i;
 		//read classidx
 		u2 classIdx = *reinterpret_cast<u2*>(data);
@@ -31,6 +30,17 @@ DexFileMethodIdx::DexFileMethodIdx(DexFileHelper* dex_file_helper)
 		dex_method_maps.insert(std::make_pair(i, dex_method));
 	}
 	LOGI("[+]read methods size:0x%08x", methodSize);
+}
+
+DexMethodIdx* DexFileMethodIdx::getDexFileMethodIdxById(u4 idx)
+{
+	DexMethodIdx* dex_method = dex_method_maps[idx];
+
+	if (dex_method == nullptr)
+	{
+		LOGE("[-]not found %x",idx);
+	}
+	return dex_method;
 }
 
 DexFileMethodIdx::~DexFileMethodIdx()

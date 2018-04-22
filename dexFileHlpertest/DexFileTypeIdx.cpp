@@ -22,9 +22,9 @@ DexFileTypeIdx::DexFileTypeIdx(DexFileHelper* dex_file_helper)
 	typeData.clear();
 	for (u4 i = 0; i < typeSize; ++i)
 	{
-		DexType* dex_type = new DexType;
+		DexTypeIdx* dex_type = new DexTypeIdx;
 		u4 strindex = dex_type_id->descriptorIdx;
-		DexString* str = dex_file_helper->dex_file_string->getDexStringById(strindex);
+		DexStringIdx* str = dex_file_helper->dex_file_string->getDexStringById(strindex);
 		dex_type->idx = i;
 		dex_type->dex_string = str;
 		typeData.insert(std::make_pair(i, dex_type));
@@ -38,7 +38,7 @@ DexFileTypeIdx::~DexFileTypeIdx()
 {
 }
 
-DexType* DexFileTypeIdx::getTypeById(u4 idx)
+DexTypeIdx* DexFileTypeIdx::getTypeById(u4 idx)
 {
 	u4 size = typeData.size();
 
@@ -60,7 +60,7 @@ u4 DexFileTypeIdx::getTypeByString(const char* str)
 
 	for (u4 i = 0; i < size; ++i)
 	{
-		DexType* dex_type = typeData[i];
+		DexTypeIdx* dex_type = typeData[i];
 		if (dex_type->dex_string->hash == hash)
 		{
 			return i;

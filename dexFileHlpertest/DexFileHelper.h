@@ -16,6 +16,7 @@
 #include "DexFileProtoTypeIdx.h"
 #include "DexFileStringIdx.h"
 #include "DexFileTypeIdx.h"
+#include "DexFileClassMethod.h"
 
 class DexFileHelper
 {
@@ -37,6 +38,7 @@ public:
 	DexFileEncodedArray* dex_file_encoded_array;
 	DexFileMethodCode* dex_file_code;
 	DexFileClass* dex_file_class;
+	DexFileClassMethod* dex_file_class_method;
 private:
 	u1 * dex_address;
 };

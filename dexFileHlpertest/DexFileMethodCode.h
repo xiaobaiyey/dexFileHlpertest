@@ -12,6 +12,7 @@ public:
 	void addOpCode(u1* data, u4 len);
 	static size_t GetDexCodeSize( DexCode* pCode);
 	static size_t GetDexCodeSize(const u1* pCode);
+	DexCodeMemory* getDexCodeByOffset(u4 offset);
 private:
 	DexFileHelper* dex_file_helper_;
 	u1* base;

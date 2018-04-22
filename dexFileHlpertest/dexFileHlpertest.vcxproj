@@ -123,6 +123,7 @@
     <ClCompile Include="DexFileAnnotationSetItem.cpp" />
     <ClCompile Include="DexFileAnnotationSetRefList.cpp" />
     <ClCompile Include="DexFileClass.cpp" />
+    <ClCompile Include="DexFileClassMethod.cpp" />
     <ClCompile Include="DexFileMethodCode.cpp" />
     <ClCompile Include="DexFileEncodedArray.cpp" />
     <ClCompile Include="DexFileFieldIdx.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="DexFileAnnotationSetItem.h" />
     <ClInclude Include="DexFileAnnotationSetRefList.h" />
     <ClInclude Include="DexFileClass.h" />
+    <ClInclude Include="DexFileClassMethod.h" />
     <ClInclude Include="DexFileMethodCode.h" />
     <ClInclude Include="DexFileEncodedArray.h" />
     <ClInclude Include="DexFileFieldIdx.h" />

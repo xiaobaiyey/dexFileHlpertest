@@ -27,7 +27,8 @@ DexFileHelper::DexFileHelper(u1* data, u4 len)
 	dex_file_annotations_directory_item = new DexFileAnnotationsDirectoryItem(this);
 	dex_file_encoded_array = new DexFileEncodedArray(this);
 	dex_file_code = new DexFileMethodCode(this);
-
+	dex_file_class_method = DexFileClassMethod::getInstance(this);
+	dex_file_class = new DexFileClass(this);
 }
 
 DexFileHelper* DexFileHelper::getDexFileHelper(const char* path)

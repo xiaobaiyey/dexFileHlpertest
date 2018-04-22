@@ -20,7 +20,7 @@ DexFileStringIdx::DexFileStringIdx(DexFileHelper* dex_file_helper)
 	stringData.clear();
 	for (u4 i = 0; i < stringSize; ++i)
 	{
-		DexString* dex_string = new DexString;
+		DexStringIdx* dex_string = new DexStringIdx;
 		u1* ptr = base + dex_string_id->stringDataOff;
 		while (*(ptr++) > 0x7f) /* empty */;
 		//int uleblen = DexFileUtils::readSignedLeb128(&ptr);
@@ -34,7 +34,7 @@ DexFileStringIdx::DexFileStringIdx(DexFileHelper* dex_file_helper)
 	LOGI("[+]parse StringID over :0x%08x",stringData.size());
 }
 
-DexString* DexFileStringIdx::getDexStringById(u4 idx)
+DexStringIdx* DexFileStringIdx::getDexStringById(u4 idx)
 {
 	u4 size = stringData.size();
 	if (idx > size)
@@ -54,7 +54,7 @@ u4 DexFileStringIdx::getStringIdx(const char* str)
 	u4 size = stringData.size();
 	for (u4 i = 0; i < size; ++i)
 	{
-		DexString* temp = stringData[i];
+		DexStringIdx* temp = stringData[i];
 		if (temp->hash == hash)
 		{
 			return i;

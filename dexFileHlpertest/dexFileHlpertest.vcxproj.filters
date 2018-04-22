@@ -75,6 +75,9 @@
     <ClCompile Include="DexFileTypeIdx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DexFileClassMethod.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -138,6 +141,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DexFileTypeIdx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileClassMethod.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

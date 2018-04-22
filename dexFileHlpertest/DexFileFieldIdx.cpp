@@ -12,7 +12,7 @@ DexFileFieldIdx::DexFileFieldIdx(DexFileHelper* dex_file_helper)
 	u1* data = base + fieldOff;
 	for (u4 i = 0; i < fieldSize; ++i)
 	{
-		DexField* dex_field = new DexField;
+		DexFieldIdx* dex_field = new DexFieldIdx;
 		dex_field->idx = i;
 		//read classidx
 		u2 classIdx = *reinterpret_cast<u2*>(data);
@@ -36,4 +36,14 @@ DexFileFieldIdx::DexFileFieldIdx(DexFileHelper* dex_file_helper)
 
 DexFileFieldIdx::~DexFileFieldIdx()
 {
+}
+
+DexFieldIdx* DexFileFieldIdx::getDexFieldIdxById(u4 idx)
+{
+	DexFieldIdx* dex_field = dex_field_maps[idx];
+	if (dex_field==nullptr)
+	{
+		LOGE("get DexFieldIdx fail %x",idx);
+	}
+	return dex_field;
 }

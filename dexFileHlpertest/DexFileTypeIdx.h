@@ -10,10 +10,10 @@ class DexFileTypeIdx
 public:
 	DexFileTypeIdx(DexFileHelper* dex_file_helper);
 	~DexFileTypeIdx();
-	DexType* getTypeById(u4 idx);
+	DexTypeIdx* getTypeById(u4 idx);
 	u4 getTypeByString(const char* str);
 private:
 	DexFileHelper* dex_file_helper_;
 	/*id,dexType*/
-	std::map<u4, DexType*> typeData;
+	std::map<u4, DexTypeIdx*> typeData;
 };

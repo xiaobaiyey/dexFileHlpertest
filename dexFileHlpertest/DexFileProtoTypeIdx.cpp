@@ -13,7 +13,7 @@ DexFileProtoTypeIdx::DexFileProtoTypeIdx(DexFileHelper* dex_file_helper)
 	u1* data = base + protoOff;
 	for (u4 i = 0; i < protoSize; ++i)
 	{
-		DexProto* dex_proto = new DexProto;
+		DexProtoIdx* dex_proto = new DexProtoIdx;
 		//read shortyIdx
 		u4 shortyIdx = *reinterpret_cast<u4*>(data);
 		dex_proto->idx = i;
@@ -39,7 +39,7 @@ DexFileProtoTypeIdx::~DexFileProtoTypeIdx()
 {
 }
 
-DexProto* DexFileProtoTypeIdx::getDexProtoByidx(u4 idx)
+DexProtoIdx* DexFileProtoTypeIdx::getDexProtoByidx(u4 idx)
 {
 	if (idx > dex_proto_maps.size())
 	{

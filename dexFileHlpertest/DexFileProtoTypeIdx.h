@@ -7,9 +7,9 @@ class DexFileProtoTypeIdx
 public:
 	DexFileProtoTypeIdx(DexFileHelper* dex_file_helper);
 	~DexFileProtoTypeIdx();
-	DexProto* getDexProtoByidx(u4 idx);
+	DexProtoIdx* getDexProtoByidx(u4 idx);
 private:
 	DexFileHelper* dex_file_helper_;
-	/*idx,DexProto*/
-	std::map<u4, DexProto*> dex_proto_maps;
+	/*idx,DexProtoIdx*/
+	std::map<u4, DexProtoIdx*> dex_proto_maps;
 };

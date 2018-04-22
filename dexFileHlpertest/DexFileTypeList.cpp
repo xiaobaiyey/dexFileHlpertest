@@ -30,7 +30,7 @@ DexFileTypeList::DexFileTypeList(DexFileHelper* dex_file_helper)
 		for (u4 j = 0; j < list_size; ++j)
 		{
 			u2 typeidx = *(u2*)data;
-			DexType* dex_type = dex_file_helper->dex_file_type->getTypeById(typeidx);
+			DexTypeIdx* dex_type = dex_file_helper->dex_file_type->getTypeById(typeidx);
 			dex_type_list->typeItems.push_back(dex_type);
 			data = data + sizeof(typeidx);
 		}

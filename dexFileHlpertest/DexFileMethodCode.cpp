@@ -107,6 +107,17 @@ size_t DexFileMethodCode::GetDexCodeSize(const u1* pCode)
 	return GetDexCodeSize(dex_code);
 }
 
+DexCodeMemory* DexFileMethodCode::getDexCodeByOffset(u4 offset)
+{
+	DexCodeMemory* dex_code_memory = dex_code_memory_maps[offset];
+
+	if (dex_code_memory==nullptr)
+	{
+		LOGE("[-] code offset erro 0x%08x",offset);
+	}
+	return dex_code_memory;
+}
+
 
 DexFileMethodCode::~DexFileMethodCode()
 {
