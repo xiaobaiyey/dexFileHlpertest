@@ -330,15 +330,22 @@ typedef struct DexCode
 	/* followed by catch_handler_item[handlersSize] */
 } DexCode;
 
-typedef struct DexCodeMemory
+
+typedef struct DexCatchHandlerMemory
 {
-	u4 offset;
-	u4 triesSize;
-	u2 insnsSize;
-	u2* insns;
-	u4  dex_code_len;
-	DexCode* dex_code;
-} DexCodeMemory;
+	DexType* typeIdx; /* type index of the caught exception type */
+	u4 offset; /* handler address */
+} DexCatchHandlerMemory;
+
+typedef struct DexTryItem
+{
+	s4 count;
+	bool catchesAll;
+	std::vector<DexCatchHandlerMemory*> dex_catch_handler_memories;
+} DexTryItem;
+
+
+;
 
 
 typedef struct DexTry
@@ -348,23 +355,47 @@ typedef struct DexTry
 	u2 handlerOff; /* offset in encoded handler data to handlers */
 } DexTry;
 
+
+typedef struct DexTryMemory
+{
+	std::vector<DexTry*> dex_tries;
+	std::vector<DexTryItem*> dex_try_items;
+} DexTryMemory;
+
+
+typedef struct DexCodeMemory
+{
+	u4 offset;
+	u2 registersSize;
+	u2 insSize;
+	u2 outsSize;
+	u2 triesSize;
+	u4 debugInfoOff; /* file offset to debug info stream */
+	u4 opcodelen; /* size of the insns array, in u2 units */
+	u2 insns[1];
+	u4 dexcodelen;
+	bool padding;
+	DexTryMemory* dex_try_memories;
+} DexCodeMemory;
+
 /*
 * Catch handler entry, used while iterating over catch_handler_items.
 */
-struct DexCatchHandler
+typedef struct DexCatchHandler
 {
 	u4 typeIdx; /* type index of the caught exception type */
 	u4 address; /* handler address */
-};
+} DexCatchHandler;
+
 
 /*
 * Iterator over catch handler data. This structure should be treated as
 * opaque.
 */
-struct DexCatchIterator
+typedef struct DexCatchIterator
 {
 	const u1* pEncodedData;
 	bool catchesAll;
-	u4 countRemaining;
+	s4 countRemaining;
 	DexCatchHandler handler;
-};
+} DexCatchIterator;

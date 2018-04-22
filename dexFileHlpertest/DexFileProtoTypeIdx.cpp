@@ -1,10 +1,9 @@
-#include "DexFileProtoType.h"
 #include "DexFileHelper.h"
 #include "DexDefine.h"
 #include "pch.h"
 
 
-DexFileProtoType::DexFileProtoType(DexFileHelper* dex_file_helper)
+DexFileProtoTypeIdx::DexFileProtoTypeIdx(DexFileHelper* dex_file_helper)
 {
 	this->dex_file_helper_ = dex_file_helper;
 	u1* base = dex_file_helper->dex_file_header->getBaseAddress();
@@ -36,11 +35,11 @@ DexFileProtoType::DexFileProtoType(DexFileHelper* dex_file_helper)
 	LOGI("[+]read protoSize:0x%08x",protoSize);
 }
 
-DexFileProtoType::~DexFileProtoType()
+DexFileProtoTypeIdx::~DexFileProtoTypeIdx()
 {
 }
 
-DexProto* DexFileProtoType::getDexProtoByidx(u4 idx)
+DexProto* DexFileProtoTypeIdx::getDexProtoByidx(u4 idx)
 {
 	if (idx > dex_proto_maps.size())
 	{

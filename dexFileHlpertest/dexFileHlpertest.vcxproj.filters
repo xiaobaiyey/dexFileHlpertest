@@ -30,9 +30,6 @@
     <ClCompile Include="DexFileClass.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DexFileField.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="DexFileHeader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -40,18 +37,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DexFileMap.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DexFileMethod.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DexFileProtoType.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DexFileString.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DexFileType.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DexFileTypeList.cpp">
@@ -69,10 +54,25 @@
     <ClCompile Include="DexFileEncodedArray.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DexFileCode.cpp">
+    <ClCompile Include="DexFileTry.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DexFileTry.cpp">
+    <ClCompile Include="DexFileMethodCode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileMethodIdx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileFieldIdx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileProtoTypeIdx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileStringIdx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DexFileTypeIdx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,9 +95,6 @@
     <ClInclude Include="DexFileClass.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DexFileField.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="DexFileHeader.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -105,18 +102,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DexFileMap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DexFileMethod.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DexFileProtoType.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DexFileString.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DexFileType.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DexFileTypeList.h">
@@ -134,10 +119,25 @@
     <ClInclude Include="DexFileEncodedArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DexFileCode.h">
+    <ClInclude Include="DexFileTry.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DexFileTry.h">
+    <ClInclude Include="DexFileMethodCode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileMethodIdx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileFieldIdx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileProtoTypeIdx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileStringIdx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFileTypeIdx.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

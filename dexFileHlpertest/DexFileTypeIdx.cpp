@@ -1,4 +1,4 @@
-#include "DexFileType.h"
+
 #include "DexFileHelper.h"
 #include "pch.h"
 #include "DexFileUtils.h"
@@ -11,7 +11,7 @@ struct DexTypeId
 	u4 descriptorIdx; /* index into stringIds list for type descriptor */
 };
 
-DexFileType::DexFileType(DexFileHelper* dex_file_helper)
+DexFileTypeIdx::DexFileTypeIdx(DexFileHelper* dex_file_helper)
 {
 	this->dex_file_helper_ = dex_file_helper;
 	u1* base = dex_file_helper->dex_file_header->getBaseAddress();
@@ -34,11 +34,11 @@ DexFileType::DexFileType(DexFileHelper* dex_file_helper)
 	LOGI("[+]parse TypeID over :0x%08x", typeData.size());
 }
 
-DexFileType::~DexFileType()
+DexFileTypeIdx::~DexFileTypeIdx()
 {
 }
 
-DexType* DexFileType::getTypeById(u4 idx)
+DexType* DexFileTypeIdx::getTypeById(u4 idx)
 {
 	u4 size = typeData.size();
 
@@ -53,7 +53,7 @@ DexType* DexFileType::getTypeById(u4 idx)
 	}
 }
 
-u4 DexFileType::getTypeByString(const char* str)
+u4 DexFileTypeIdx::getTypeByString(const char* str)
 {
 	u4 hash = DexFileUtils::hash(str);
 	u4 size = typeData.size();

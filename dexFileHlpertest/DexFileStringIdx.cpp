@@ -1,4 +1,4 @@
-#include "DexFileString.h"
+
 #include "pch.h"
 #include "DexFileHelper.h"
 #include "DexFileUtils.h"
@@ -8,7 +8,7 @@ struct DexStringId
 	u4 stringDataOff; /* file offset to string_data_item */
 };
 
-DexFileString::DexFileString(DexFileHelper* dex_file_helper)
+DexFileStringIdx::DexFileStringIdx(DexFileHelper* dex_file_helper)
 {
 	this->dex_file_helper_ = dex_file_helper;
 	u1* base = dex_file_helper->dex_file_header->getBaseAddress();
@@ -34,7 +34,7 @@ DexFileString::DexFileString(DexFileHelper* dex_file_helper)
 	LOGI("[+]parse StringID over :0x%08x",stringData.size());
 }
 
-DexString* DexFileString::getDexStringById(u4 idx)
+DexString* DexFileStringIdx::getDexStringById(u4 idx)
 {
 	u4 size = stringData.size();
 	if (idx > size)
@@ -48,7 +48,7 @@ DexString* DexFileString::getDexStringById(u4 idx)
 	}
 }
 
-u4 DexFileString::getStringIdx(const char* str)
+u4 DexFileStringIdx::getStringIdx(const char* str)
 {
 	u4 hash = DexFileUtils::hash(str);
 	u4 size = stringData.size();
@@ -64,6 +64,6 @@ u4 DexFileString::getStringIdx(const char* str)
 	return -1;
 }
 
-DexFileString::~DexFileString()
+DexFileStringIdx::~DexFileStringIdx()
 {
 }

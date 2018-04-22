@@ -1,15 +1,15 @@
 #pragma once
 #include <map>
 #include "DexDefine.h"
-#include "DexFileString.h"
+
 class DexFileHelper;
 
 
-class DexFileType
+class DexFileTypeIdx
 {
 public:
-	DexFileType(DexFileHelper* dex_file_helper);
-	~DexFileType();
+	DexFileTypeIdx(DexFileHelper* dex_file_helper);
+	~DexFileTypeIdx();
 	DexType* getTypeById(u4 idx);
 	u4 getTypeByString(const char* str);
 private:

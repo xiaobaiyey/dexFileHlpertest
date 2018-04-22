@@ -1,9 +1,8 @@
-#include "DexFileField.h"
 #include "DexFileHelper.h"
 #include "pch.h"
 
 
-DexFileField::DexFileField(DexFileHelper* dex_file_helper)
+DexFileFieldIdx::DexFileFieldIdx(DexFileHelper* dex_file_helper)
 {
 	this->dex_file_helper_ = dex_file_helper;
 	u1* base = dex_file_helper->dex_file_header->getBaseAddress();
@@ -35,6 +34,6 @@ DexFileField::DexFileField(DexFileHelper* dex_file_helper)
 	LOGI("[+]read fields size:0x%08x",fieldSize);
 }
 
-DexFileField::~DexFileField()
+DexFileFieldIdx::~DexFileFieldIdx()
 {
 }

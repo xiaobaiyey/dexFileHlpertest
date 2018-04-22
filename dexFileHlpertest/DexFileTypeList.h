@@ -2,8 +2,8 @@
 #include <map>
 #include <vector>
 #include "DexDefine.h"
-#include "DexFileString.h"
-#include "DexFileProtoType.h"
+
+
 class DexFileHelper;
 class DexFileTypeList
 {

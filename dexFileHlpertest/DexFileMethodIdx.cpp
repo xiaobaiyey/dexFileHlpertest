@@ -1,9 +1,9 @@
-#include "DexFileMethod.h"
+
 #include "DexFileHelper.h"
 #include "pch.h"
 
 
-DexFileMethod::DexFileMethod(DexFileHelper* dex_file_helper)
+DexFileMethodIdx::DexFileMethodIdx(DexFileHelper* dex_file_helper)
 {
 	this->dex_file_helper_ = dex_file_helper;
 	u1* base = dex_file_helper->dex_file_header->getBaseAddress();
@@ -33,6 +33,6 @@ DexFileMethod::DexFileMethod(DexFileHelper* dex_file_helper)
 	LOGI("[+]read methods size:0x%08x", methodSize);
 }
 
-DexFileMethod::~DexFileMethod()
+DexFileMethodIdx::~DexFileMethodIdx()
 {
 }

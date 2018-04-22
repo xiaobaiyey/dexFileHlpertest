@@ -2,11 +2,11 @@
 #include <map>
 #include "DexDefine.h"
 class DexFileHelper;
-class DexFileProtoType
+class DexFileProtoTypeIdx
 {
 public:
-	DexFileProtoType(DexFileHelper* dex_file_helper);
-	~DexFileProtoType();
+	DexFileProtoTypeIdx(DexFileHelper* dex_file_helper);
+	~DexFileProtoTypeIdx();
 	DexProto* getDexProtoByidx(u4 idx);
 private:
 	DexFileHelper* dex_file_helper_;

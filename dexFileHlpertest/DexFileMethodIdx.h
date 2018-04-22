@@ -2,11 +2,11 @@
 #include <map>
 #include "DexDefine.h"
 class DexFileHelper;
-class DexFileMethod
+class DexFileMethodIdx
 {
 public:
-	DexFileMethod(DexFileHelper* dex_file_helper);
-	~DexFileMethod();
+	DexFileMethodIdx(DexFileHelper* dex_file_helper);
+	~DexFileMethodIdx();
 private:
 	DexFileHelper * dex_file_helper_;
 	std::map<u4, DexMethod*> dex_method_maps;
