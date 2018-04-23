@@ -51,3 +51,8 @@ DexProtoIdx* DexFileProtoTypeIdx::getDexProtoByidx(u4 idx)
 		return dex_proto_maps[idx];
 	}
 }
+
+u4 DexFileProtoTypeIdx::getProtoSize()
+{
+	return dex_proto_maps.size();
+}

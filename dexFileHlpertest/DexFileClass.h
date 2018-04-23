@@ -13,7 +13,7 @@ private:
 	DexFileHelper* dex_file_helper_;
 	DexFileClassMethod* dex_file_class_method_;
 	u1* base;
-	std::map<u4, DexClassDef*> dex_class_def_maps;
+	std::map<u4, DexClass*> dex_class_def_maps;
 
 	void parseClassDef(u1* data, u4 defSize);
 	DexClassData* parseClassData(DexClass* dex_class,u4 offset);

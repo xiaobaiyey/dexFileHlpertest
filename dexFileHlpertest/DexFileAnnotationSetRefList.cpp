@@ -22,13 +22,16 @@ DexFileAnnotationSetRefList::DexFileAnnotationSetRefList(DexFileHelper* dex_file
 		dex_annotation_set_ref_list->size = item_len;
 		dex_annotation_set_ref_list->offset = offset;
 		data = data + sizeof(item_len);
-		for (u4 i = 0; i < item_len; ++i)
+		for (u4 j = 0; j < item_len; ++j)
 		{
 			u4 set_item_offset = *reinterpret_cast<u4*>(data);
-			DexAnnotationSetItem* dex_annotation_set_item = dex_file_helper
-			                                                ->dex_file_annotation_set_item->getDexAnnotationSetItemByOffset(
-				                                                set_item_offset);
-			dex_annotation_set_ref_list->dex_annotation_set_items.push_back(dex_annotation_set_item);
+			if (set_item_offset!=0)
+			{
+				DexAnnotationSetItem* dex_annotation_set_item = dex_file_helper
+					->dex_file_annotation_set_item->getDexAnnotationSetItemByOffset(
+						set_item_offset);
+				dex_annotation_set_ref_list->dex_annotation_set_items.push_back(dex_annotation_set_item);
+			}
 			data = data + sizeof(item_len);
 		}
 		dex_annotation_set_ref_list_maps.insert(std::make_pair(offset, dex_annotation_set_ref_list));

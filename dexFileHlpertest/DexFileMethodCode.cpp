@@ -39,7 +39,7 @@ DexFileMethodCode::DexFileMethodCode(DexFileHelper* dex_file_helper)
 		u1* temp = data;
 		/*get Dexcode len*/
 		dex_code_memory->dexcodelen = DexFileUtils::align_4(GetDexCodeSize(temp));
-		LOGI("index %d offset 0x%08x len:%d", i, offset, dex_code_memory->dexcodelen);
+		//LOGI("index %d offset 0x%08x len:%d", i, offset, dex_code_memory->dexcodelen);
 		dex_code_memory_maps.insert(std::make_pair(offset, dex_code_memory));
 		if (dex_code->triesSize > 0)
 		{

@@ -8,6 +8,7 @@ public:
 	DexFileProtoTypeIdx(DexFileHelper* dex_file_helper);
 	~DexFileProtoTypeIdx();
 	DexProtoIdx* getDexProtoByidx(u4 idx);
+	u4 getProtoSize();
 private:
 	DexFileHelper* dex_file_helper_;
 	/*idx,DexProtoIdx*/

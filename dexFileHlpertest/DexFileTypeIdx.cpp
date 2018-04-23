@@ -1,4 +1,3 @@
-
 #include "DexFileHelper.h"
 #include "pch.h"
 #include "DexFileUtils.h"
@@ -51,6 +50,11 @@ DexTypeIdx* DexFileTypeIdx::getTypeById(u4 idx)
 	{
 		return typeData[idx];
 	}
+}
+
+u4 DexFileTypeIdx::getTypeIdxSize()
+{
+	return typeData.size();
 }
 
 u4 DexFileTypeIdx::getTypeByString(const char* str)

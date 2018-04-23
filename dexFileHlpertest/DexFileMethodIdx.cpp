@@ -46,3 +46,8 @@ DexMethodIdx* DexFileMethodIdx::getDexFileMethodIdxById(u4 idx)
 DexFileMethodIdx::~DexFileMethodIdx()
 {
 }
+
+u4 DexFileMethodIdx::getDexMethodIdxSize()
+{
+	return dex_method_maps.size();
+}

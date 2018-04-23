@@ -1,4 +1,3 @@
-
 #include "pch.h"
 #include "DexFileHelper.h"
 #include "DexFileUtils.h"
@@ -62,6 +61,11 @@ u4 DexFileStringIdx::getStringIdx(const char* str)
 	}
 	LOGE("[-]getStringIdx fail!!!");
 	return -1;
+}
+
+u4 DexFileStringIdx::getStringIdxSize()
+{
+	return stringData.size();
 }
 
 DexFileStringIdx::~DexFileStringIdx()

@@ -41,9 +41,14 @@ DexFileFieldIdx::~DexFileFieldIdx()
 DexFieldIdx* DexFileFieldIdx::getDexFieldIdxById(u4 idx)
 {
 	DexFieldIdx* dex_field = dex_field_maps[idx];
-	if (dex_field==nullptr)
+	if (dex_field == nullptr)
 	{
 		LOGE("get DexFieldIdx fail %x",idx);
 	}
 	return dex_field;
+}
+
+u4 DexFileFieldIdx::getDexFieldIdxSize()
+{
+	return dex_field_maps.size();
 }

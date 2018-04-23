@@ -16,8 +16,9 @@ DexFileClass::DexFileClass(DexFileHelper* dex_file_helper)
 	}
 	u1* data = base + dex_map_item->offset;
 	u4 set_item_len = dex_map_item->size;
-	dex_file_class_method_=dex_file_helper_->dex_file_class_method;
+	dex_file_class_method_ = dex_file_helper_->dex_file_class_method;
 	parseClassDef(data, set_item_len);
+	LOGI("[+]kDexTypeClassDefItem size:0x%08x",dex_class_def_maps.size());
 }
 
 DexFileClass::~DexFileClass()
@@ -45,7 +46,9 @@ void DexFileClass::parseClassDef(u1* data, u4 defSize)
 		dex_class->interfacesList = interfacesList;
 
 
-		DexStringIdx* sourceFileString = dex_file_helper_->dex_file_string->getDexStringById(dex_class_def->sourceFileIdx);
+		DexStringIdx* sourceFileString = dex_class_def->sourceFileIdx == 0 || dex_class_def->sourceFileIdx == kDexNoIndex
+			                                 ? nullptr
+			                                 : dex_file_helper_->dex_file_string->getDexStringById(dex_class_def->sourceFileIdx);
 		dex_class->sourceFileString = sourceFileString;
 
 
@@ -68,7 +71,8 @@ void DexFileClass::parseClassDef(u1* data, u4 defSize)
 		DexClassData* dex_class_data = dex_class_def->classDataOff == 0
 			                               ? nullptr
 			                               : parseClassData(dex_class, dex_class_def->classDataOff);
-
+		dex_class->dex_class_data = dex_class_data;
+		dex_class_def_maps.insert(std::make_pair(i, dex_class));
 		dex_class_def++;
 	}
 }
@@ -144,5 +148,6 @@ DexField* DexFileClass::ReadClassDataField(const u1** pData, u4* lastIndex)
 	u4 index = *lastIndex + DexFileUtils::readUnsignedLeb128(pData);
 	dex_field->accessFlags = DexFileUtils::readUnsignedLeb128(pData);
 	dex_field->fieldIdx = dex_file_helper_->dex_file_field_idx->getDexFieldIdxById(index);
+	*lastIndex = index;
 	return dex_field;
 }

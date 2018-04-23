@@ -11,6 +11,7 @@ public:
 	DexFileTypeIdx(DexFileHelper* dex_file_helper);
 	~DexFileTypeIdx();
 	DexTypeIdx* getTypeById(u4 idx);
+	u4 getTypeIdxSize();
 	u4 getTypeByString(const char* str);
 private:
 	DexFileHelper* dex_file_helper_;
